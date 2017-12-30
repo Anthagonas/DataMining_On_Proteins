@@ -36,14 +36,18 @@ print ("Nom du critere de clusterisation\n");
 critere = input();
 print ("Nom du premier fichier (sans l'extension .json) :\n");
 file1 = open(input()+".json");
-print ("Fichier correctement chargé !\n");
 print ("\nNom du deuxième fichier (sans l'extension .json) :\n");
 file2 = open(input()+".json");
-print ("Fichier correctement chargé !\n");
 print ("\nNom du dernier fichier (sans l'extension .json) :\n");
 file3 = open(input()+".json");
-print ("Fichier correctement chargé !\n");
-for files in (file1,file2,file3) :
+
+print ("Chargement des fichiers...\n");
+json1 = load(file1);
+json2 = load(file2);
+json3 = load(file3);
+print ("Fichiers correctement chargés !\n");
+
+for files in (json1,json2,json3) :
     file_count +=1;
     print ("\nCalcul sur le fichier {}...\n".format(file_count));
     """"
@@ -52,6 +56,6 @@ for files in (file1,file2,file3) :
     for proteinName,proteinDicValues in files.items() :
         entry_count += 1;
         clusterList[proteinName]=recup_data(proteinDicValues,critere);
-        print ("{} lignes récupérées... Preparation au clustering...\n".format(entry_count));
+print ("{} lignes récupérées... Preparation au clustering...\n".format(entry_count));
 
 print(clusterList);
