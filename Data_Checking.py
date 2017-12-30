@@ -8,7 +8,7 @@ Formatage du Json :
 									[{key8:,key9 : [],key10:,key11:,key12:,key13:}]
 	}
 }
-key names may vary
+Le nom des clefs peut varier
 """
 from json import load;
 
