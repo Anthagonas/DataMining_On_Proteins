@@ -1,12 +1,15 @@
 # coding: utf-8
-#Programme pour le Data Mining : Parcourir 3 fichiers json 
-#Calculer le pourcentage de value présente de chaque clé
-#Formatage du Json : 
-# { key1 : 
-#	{key2:,key3:,key4:,key5:,key6:,key7 : 
-#									[{key8:,key9 : [],key10:,key11:,key12:,key13:}]
-#	}
-#} key names may vary
+"""
+Programme pour le Data Mining : Parcourir 3 fichiers json
+Calculer le pourcentage de value présente de chaque clé
+Formatage du Json :
+{ key1 :
+	{key2:,key3:,key4:,key5:,key6:,key7 :
+									[{key8:,key9 : [],key10:,key11:,key12:,key13:}]
+	}
+}
+key names may vary
+"""
 from json import load;
 
 print ("Nom du premier fichier (sans l'extension .json) :\n");
@@ -34,7 +37,7 @@ for file in (json1,json2,json3) :
 		entry_count += 1;
 		for key,value in subdic.items() :
 			if str(value).lower() not in ["",None,"none",[],[""],"."] :
-				if value : 
+				if value :
 					if not key in entry_dic :
 						entry_dic[key] =1;
 					else :
