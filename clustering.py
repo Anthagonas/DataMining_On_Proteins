@@ -55,7 +55,7 @@ for files in (json1,json2,json3) :
     """
     for proteinName,proteinDicValues in files.items() :
         entry_count += 1;
-        clusterList[proteinName]=recup_data(proteinDicValues,critere);
+        clusterList[proteinName]={critere : recup_data(proteinDicValues,critere)};
 print ("{} lignes récupérées... Preparation au clustering...\n".format(entry_count));
 
 print(clusterList);

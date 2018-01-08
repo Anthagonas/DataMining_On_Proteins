@@ -8,3 +8,13 @@ stop : 100.0%
 start : 100.0%
 type_seq : 100.0%
 Dbxref : 100.0%
+seq : 66.66666666666667%
+seq_length : 100.0%
+source : 100.0%
+protein_existence : 100.0%
+fasta : 66.66666666666667%
+valeurs pour 'fasta' :
+stop : 100.0%
+start : 100.0%
+type_seq : 100.0%
+Dbxref : 66.66666666666667%
