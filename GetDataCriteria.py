@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 """
 DataMining program : read 3 JSon files
-Group proteins considering the value of a considered criteria
+gather proteins' criteria values
 Json format :
 { key1 :
     {key2:,key3:,key4:,key5:,key6:,key7 :
         [{key8:,key9 : [],key10:,key11:,key12:,key13:}]
     }
 }
-key7 correspond to the domains
+key7 correspond to the domains (key name is "fasta")
 Key names may vary
 """
 #Script de Data-Mining sur un ensemble de protéines de differentes espèces
@@ -24,9 +24,10 @@ def recup_data(dic, crit):
     return dic[crit]
 
 def getCriterias(FileList, criteriaList):
-    #parcourir la BD
-    #recup les datas d'interet
-    #en fonction du critere choisi, regrouper les protéines
+    """
+    processes the DataBase (FileList)
+    gathers the values of the criteria of interest
+    """
     #TODO : trouver/creer algo de clustering
     file_count = 0
     entry_count = 0
