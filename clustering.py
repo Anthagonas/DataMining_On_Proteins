@@ -13,8 +13,8 @@ key7 correspond to the domains (key name is "fasta")
 Key names may vary
 """
 from json import load
-import GetDataCriteria
+from GetDataCriteria import *
 
 #main script for clustering
-initialList = getCriterias(loadFiles, ["seq"])
+initialList = getCriterias(loadFiles(), ["seq",'seq_length',"fasta"])
 print(initialList)

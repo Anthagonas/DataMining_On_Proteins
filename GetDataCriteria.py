@@ -18,14 +18,14 @@ from json import load
 def loadFiles(fileCount=3):
     fileList = []
     jsonList = []
-    for i in range(1,fileCount):
-        print("Nom du fichier N°{}(sans l'extension .json) :\n".format(i))
-        fileList.add(open(input()+".json",r))
+    for i in range(0,fileCount):
+        print("Nom du fichier N°{}(sans l'extension .json) :\n".format(i+1))
+        fileList.append(open(input()+".json"))
 
     print("Chargement des fichiers...\n")
     for i in range(len(fileList)):
         print("Chargement du fichier N°{}...\n".format(i+1))
-        jsonList.add(load(fileList[i]))
+        jsonList.append(load(fileList[i]))
         print("Fichier correctement chargé !\n")
     return jsonList
 
@@ -33,11 +33,15 @@ def recup_data(dic, crit):
     """
     returns the value of a given key within a python dictionnary
     """
-    if crit == "fasta":
-        return len(dic[crit])
-    return dic[crit]
+    if crit=="fasta":
+        try:
+            return len(dic[crit])
+        except KeyError :
+            return 0
+    else:
+        return dic[crit]
 
-def getCriterias(FileList, criteriaList):
+def getCriterias(fileList, criteriaList):
     """
     processes the DataBase (FileList)
     gathers the values of the criteria of interest
@@ -47,7 +51,7 @@ def getCriterias(FileList, criteriaList):
     file_count = 0
     entry_count = 0
     clusterList = {}
-    for files in FileList:
+    for files in fileList:
         file_count += 1
         print("\nCalcul sur le fichier {}...\n".format(file_count))
         """"
@@ -59,7 +63,7 @@ def getCriterias(FileList, criteriaList):
                 if not proteinName in clusterList :
                     clusterList[proteinName] = [{critere : recup_data(proteinDicValues, critere)}]
                 else :
-                    clusterList[proteinName].add({critere : recup_data(proteinDicValues, critere)})
+                    clusterList[proteinName].append({critere : recup_data(proteinDicValues, critere)})
     print("{} lignes récupérées... Preparation au clustering...\n".format(entry_count))
     return clusterList
 
