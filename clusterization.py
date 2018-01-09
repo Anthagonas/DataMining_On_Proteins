@@ -12,3 +12,5 @@ Json format :
 key7 correspond to the domains (key name is "fasta")
 Key names may vary
 """
+from json import load
+import GetDataCriteria
