@@ -16,5 +16,6 @@ from json import load
 from GetDataCriteria import *
 
 #main script for clustering
-initialList = getCriterias(loadFiles(), ["seq",'seq_length',"fasta"])
-print(initialList)
+initialDic = getCriterias(loadFiles(), ["seq",'seq_length',"fasta"])
+#initialDic = {"accession number" : ["criteria1" : value,"crit2":value,...]}
+#TODO : for keys,val in initialDic  find val[i] with crit=searched crit and cluster
