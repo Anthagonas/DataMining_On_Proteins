@@ -27,6 +27,8 @@ def getCriterias(FileList, criteriaList):
     """
     processes the DataBase (FileList)
     gathers the values of the criteria of interest
+    FileList = loaded json files
+    criteriaList = list of string containing keys to gather
     """
     #TODO : trouver/creer algo de clustering
     file_count = 0
