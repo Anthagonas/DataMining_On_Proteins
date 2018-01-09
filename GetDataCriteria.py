@@ -15,12 +15,26 @@ Key names may vary
 #Py3
 from json import load
 
+def loadFiles(fileCount=3):
+    fileList = []
+    jsonList = []
+    for i in range(1,fileCount):
+        print("Nom du fichier N°{}(sans l'extension .json) :\n".format(i))
+        fileList.add(open(input()+".json",r))
+
+    print("Chargement des fichiers...\n")
+    for i in range(len(fileList)):
+        print("Chargement du fichier N°{}...\n".format(i+1))
+        jsonList.add(load(fileList[i]))
+        print("Fichier correctement chargé !\n")
+    return jsonList
 
 def recup_data(dic, crit):
     """
     returns the value of a given key within a python dictionnary
     """
-    #TODO : being able to process domains ( key name = "fasta")
+    if crit == "fasta":
+        return len(dic[crit])
     return dic[crit]
 
 def getCriterias(FileList, criteriaList):
@@ -30,7 +44,6 @@ def getCriterias(FileList, criteriaList):
     FileList = loaded json files
     criteriaList = list of string containing keys to gather
     """
-    #TODO : trouver/creer algo de clustering
     file_count = 0
     entry_count = 0
     clusterList = {}
@@ -42,29 +55,19 @@ def getCriterias(FileList, criteriaList):
         """
         for proteinName, proteinDicValues in files.items():
             entry_count += 1
-            clusterList[proteinName] = {critere : recup_data(proteinDicValues, critere)}
+            for critere in criteriaList:
+                if not proteinName in clusterList :
+                    clusterList[proteinName] = [{critere : recup_data(proteinDicValues, critere)}]
+                else :
+                    clusterList[proteinName].add({critere : recup_data(proteinDicValues, critere)})
     print("{} lignes récupérées... Preparation au clustering...\n".format(entry_count))
     return clusterList
 
 
 if __name__ == '__main__':
     #execute script
-    clusterList = {} # Protein name : value
-    file_count = 0
-    entry_count = 0
     print("Nom du critere de clusterisation\n")
     critere = input()
-    print("Nom du premier fichier (sans l'extension .json) :\n")
-    file1 = open(input()+".json")
-    print("\nNom du deuxième fichier (sans l'extension .json) :\n")
-    file2 = open(input()+".json")
-    print("\nNom du dernier fichier (sans l'extension .json) :\n")
-    file3 = open(input()+".json")
+    fileList=loadFiles();
 
-    print("Chargement des fichiers...\n")
-    json1 = load(file1)
-    json2 = load(file2)
-    json3 = load(file3)
-    print("Fichiers correctement chargés !\n")
-
-    print(getCriterias([json1, json2, json3], ["seq"]))
+    print(getCriterias(fileList, [critere]))

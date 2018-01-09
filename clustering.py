@@ -14,3 +14,7 @@ Key names may vary
 """
 from json import load
 import GetDataCriteria
+
+#main script for clustering
+initialList = getCriterias(loadFiles, ["seq"])
+print(initialList)
