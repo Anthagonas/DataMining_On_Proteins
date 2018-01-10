@@ -24,15 +24,22 @@ def countEachValue(list):
     return valueDic
 
 #main script for histograms
-critList=['seq_length',"fasta","protein_existence","protein_existence"]
+critList = ['seq_length',"fasta","protein_existence","phi"]
 initialDic = getCriterias(loadFiles(), critList)
-histogrammes={} #contain for each criteria the repatition of the values
-valueList=[]
+histogrammes = {} #contain for each criteria the repatition of the values
+valueList = []
 for crit in critList:
-    for prot,subDic in initialDic.items():
+    for prot, subDic in initialDic.items():
         valueList.append(subDic[crit])
-    histogrammes[crit]=valueList
-    valueList=[]
-for key,value in histogrammes.items():
-    histogrammes[key]=countEachValue(histogrammes[key])
+    histogrammes[crit] = valueList
+    valueList = []
+for key, value in histogrammes.items():
+    histogrammes[key] = countEachValue(histogrammes[key])
+
+
 #TODO: Write files to create viable R table
+for crit in critList:
+    with open(crit+".txt", 'w') as out:
+        out.write("value,count\n")
+        for entries, value in sorted(histogrammes[crit].items(), key=lambda x: x[1]):
+            out.write(str(entries) + ',' + str(value)+'\n')

@@ -14,6 +14,7 @@ Key names may vary
 #Script de Data-Mining sur un ensemble de protéines de differentes espèces
 #Py3
 from json import load
+import ph_table
 
 def loadFiles(fileCount=3):
     fileList = []
@@ -29,6 +30,17 @@ def loadFiles(fileCount=3):
         print("Fichier correctement chargé !\n")
     return jsonList
 
+def getPhiValue(seq):
+    phi_value = 0.0
+    count = 0
+    for letter in seq:
+        if letter == "X":
+            continue
+        count += 1
+        phi_value +=ph_table.PHTABLE[letter]
+    return round(phi_value/len(seq), 2)
+
+
 def recup_data(dic, crit):
     """
     returns the value of a given key within a python dictionnary
@@ -38,8 +50,10 @@ def recup_data(dic, crit):
             return len(dic[crit])
         except KeyError :
             return 0
-    else:
-        return dic[crit]
+    if crit=="phi":
+        return getPhiValue(dic["seq"])
+    
+    return dic[crit]
 
 def getCriterias(fileList, criteriaList):
     """
@@ -65,6 +79,9 @@ def getCriterias(fileList, criteriaList):
                 else:
                     clusterList[proteinName]={}
                     clusterList[proteinName][critere] = recup_data(proteinDicValues, critere)
+                if critere == "seq":
+                    clusterList[proteinName]["phi"] = recup_data(proteinDicValues, "phi")
+
 
 
     print("{} lignes récupérées... Preparation au clustering...\n".format(entry_count))
