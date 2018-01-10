@@ -21,6 +21,7 @@ initialDic = getCriterias(loadFiles(), critList)
 print(initialDic)
 valuelist=[]
 #initialDic = {"accession number" : {"criteria1" : value,"crit2":value,...}, "accesN°2" : {}}
+#TODO: Write a file to create a viable R table
 for crit in critList:
     for prot,subDic in initialDic.items():
         valuelist.append(subDic[crit])

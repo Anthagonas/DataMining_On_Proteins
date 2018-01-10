@@ -35,4 +35,4 @@ for crit in critList:
     valueList=[]
 for key,value in histogrammes.items():
     histogrammes[key]=countEachValue(histogrammes[key])
-print(histogrammes)
+#TODO: Write files to create viable R table
