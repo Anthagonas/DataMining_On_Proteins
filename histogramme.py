@@ -24,7 +24,7 @@ def countEachValue(list):
     return valueDic
 
 #main script for histograms
-critList=['seq_length',"fasta","protein_existence"]#,"seq",]
+critList=['seq_length',"fasta","protein_existence","protein_existence"]
 initialDic = getCriterias(loadFiles(), critList)
 histogrammes={} #contain for each criteria the repatition of the values
 valueList=[]

@@ -2,7 +2,7 @@
 """
 DataMining program : read JSon files
 gather proteins' criteria values
-and creates clusters
+and creates a table usable via R
 Json format :
 { key1 :
     {key2:,key3:,key4:,key5:,key6:,key7 :
@@ -12,22 +12,15 @@ Json format :
 key7 correspond to the domains (key name is "fasta")
 Key names may vary
 """
-from GetDataCriteria import *
-from math import sqrt
-
-def analyzeCluster(dic,crit,finalList):
-    return
-
+from GetDataCriteria import getCriterias, loadFiles
 
 #main script for clustering
 clusteredList=[]
 critList=["seq",'seq_length',"fasta","protein_existence"]
 initialDic = getCriterias(loadFiles(), critList)
 print(initialDic)
-histogrammes={}
 valuelist=[]
 #initialDic = {"accession number" : {"criteria1" : value,"crit2":value,...}, "accesN°2" : {}}
 for crit in critList:
     for prot,subDic in initialDic.items():
         valuelist.append(subDic[crit])
-        analyzeCluster(initialDic, crit, clusteredList)  
