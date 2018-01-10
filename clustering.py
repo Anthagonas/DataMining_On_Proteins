@@ -16,6 +16,9 @@ from json import load
 from GetDataCriteria import *
 
 #main script for clustering
-initialDic = getCriterias(loadFiles(), ["seq",'seq_length',"fasta"])
-#initialDic = {"accession number" : ["criteria1" : value,"crit2":value,...]}
-#TODO : for keys,val in initialDic  find val[i] with crit=searched crit and cluster
+initialDic = getCriterias(loadFiles(), ["seq",'seq_length',"fasta","protein_existence"])
+print(len(initialDic[protein]) for protein,valueDic in initialDic)
+#initialDic = {"accession number" : {"criteria1" : value,"crit2":value,...}, "accesN°2" : {}}
+"""for protein,valueDic in initialDic:
+    for criteria,value in valueDic:
+        analyzeCluster(protein,criteria,value,clusteredList)"""

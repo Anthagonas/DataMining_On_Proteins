@@ -60,10 +60,13 @@ def getCriterias(fileList, criteriaList):
         for proteinName, proteinDicValues in files.items():
             entry_count += 1
             for critere in criteriaList:
-                if not proteinName in clusterList :
-                    clusterList[proteinName] = [{critere : recup_data(proteinDicValues, critere)}]
-                else :
-                    clusterList[proteinName].append({critere : recup_data(proteinDicValues, critere)})
+                if proteinName in clusterList :
+                    clusterList[proteinName][critere] = recup_data(proteinDicValues, critere)
+                else:
+                    clusterList[proteinName]={}
+                    clusterList[proteinName][critere] = recup_data(proteinDicValues, critere)
+
+
     print("{} lignes récupérées... Preparation au clustering...\n".format(entry_count))
     return clusterList
 
