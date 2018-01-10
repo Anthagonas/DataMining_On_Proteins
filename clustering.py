@@ -1,6 +1,6 @@
 # -*- coding : utf-8 -*-
 """
-DataMining program : read 3 JSon files
+DataMining program : read JSon files
 gather proteins' criteria values
 and creates clusters
 Json format :
@@ -12,13 +12,22 @@ Json format :
 key7 correspond to the domains (key name is "fasta")
 Key names may vary
 """
-from json import load
 from GetDataCriteria import *
+from math import sqrt
+
+def analyzeCluster(dic,crit,finalList):
+    return
+
 
 #main script for clustering
-initialDic = getCriterias(loadFiles(), ["seq",'seq_length',"fasta","protein_existence"])
-print(len(initialDic[protein]) for protein,valueDic in initialDic)
+clusteredList=[]
+critList=["seq",'seq_length',"fasta","protein_existence"]
+initialDic = getCriterias(loadFiles(), critList)
+print(initialDic)
+histogrammes={}
+valuelist=[]
 #initialDic = {"accession number" : {"criteria1" : value,"crit2":value,...}, "accesN°2" : {}}
-"""for protein,valueDic in initialDic:
-    for criteria,value in valueDic:
-        analyzeCluster(protein,criteria,value,clusteredList)"""
+for crit in critList:
+    for prot,subDic in initialDic.items():
+        valuelist.append(subDic[crit])
+        analyzeCluster(initialDic, crit, clusteredList)  
