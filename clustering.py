@@ -16,7 +16,7 @@ from GetDataCriteria import getCriterias, loadFiles
 
 #main script for clustering
 clusteredList=[]
-critList=["seq","seq_length","fasta","protein_existence","entry_name","phi"]
+critList=["entry_name","seq","seq_length","fasta","protein_existence","phi"]
 initialDic = getCriterias(loadFiles(), critList)
 #initialDic = {"accession number" : {"criteria1" : value,"crit2":value,...}, "accesN°2" : {}}
 with open("clusters.csv", 'w') as out:
