@@ -21,5 +21,8 @@ ggplot() +
 
 data_agnes<-agnes(data,FALSE)
 data_agnes
-plot(data_agnes)
-help(plot.diana)
+dg <- as.dendrogram(data_agnes)
+ddata <- dendro_data(data_agnes)
+ggplot() + 
+  geom_segment(data = ddata$segments, 
+               aes(x = x, y = y, xend = xend, yend = yend))
