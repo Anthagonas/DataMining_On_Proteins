@@ -39,7 +39,7 @@ for key, value in histogrammes.items():
 
 #TODO: Write files to create viable R table
 for crit in critList:
-    with open(crit+".txt", 'w') as out:
+    with open(crit+".csv", 'w') as out:
         out.write("value,count\n")
         for entries, value in sorted(histogrammes[crit].items(), key=lambda x: x[1]):
             out.write(str(entries) + ',' + str(value)+'\n')
