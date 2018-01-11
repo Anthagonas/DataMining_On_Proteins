@@ -16,12 +16,9 @@ from GetDataCriteria import getCriterias, loadFiles
 
 #main script for clustering
 clusteredList=[]
-critList=["seq","seq_length","fasta","protein_existence"]
+critList=["seq","seq_length","fasta","protein_existence","entry_name","phi"]
 initialDic = getCriterias(loadFiles(), critList)
-print(initialDic)
-valuelist=[]
 #initialDic = {"accession number" : {"criteria1" : value,"crit2":value,...}, "accesN°2" : {}}
-#TODO: Write a file to create a viable R table
 with open("clusters.csv", 'w') as out:
     out.write("name")
     for crit in critList:
