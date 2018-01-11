@@ -12,22 +12,22 @@ library(factoextra)
 data<-read.csv("clusters.csv",sep=",",row.names = 2)
 data<-subset(data,select = -seq)
 data<-subset(data,select = -name)
-data<-data[sample(nrow(data), 3500), ]
+data<-data[sample(nrow(data), 50), ]
 
 #Top down Divisive analysis
 data_diana<-diana(data,FALSE)
-data_diana
+#data_diana
 dg <- as.dendrogram(data_diana)
 ddata <- dendro_data(data_diana)
+ggdendrogram(ddata)
 ggplot() + 
   geom_segment(data = ddata$segments, 
                aes(x = x, y = y, xend = xend, yend = yend))
-grp <- cutree(data_diana, k = 5)
-fviz_cluster(list(data = , cluster = grp))
+grp <- cutree(data_diana, k = 6)
 
 #Bottom up Agglomerative nesting
 data_agnes<-agnes(data,FALSE)
-data_agnes
+#data_agnes
 dg <- as.dendrogram(data_agnes)
 ddata <- dendro_data(data_agnes)
 ggplot() + 
