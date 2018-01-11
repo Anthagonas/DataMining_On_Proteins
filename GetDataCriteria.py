@@ -34,10 +34,11 @@ def getPhiValue(seq):
     phi_value = 0.0
     count = 0
     for letter in seq:
-        if letter == "X":
+        try:
+            phi_value +=ph_table.PHTABLE[letter]
+            count += 1
+        except KeyError:
             continue
-        count += 1
-        phi_value +=ph_table.PHTABLE[letter]
     return round(phi_value/len(seq), 2)
 
 
