@@ -1,5 +1,5 @@
 getwd()
-setwd("D:/Program Files (x86)/GitProject/DataMining_On_Proteins/")
+setwd("/net/cremi/amlaport/espaces/travail/M2_bioinfo/DEA/DataMining_On_Proteins/")
 #install.packages("ggplot2")
 #install.packages("ggdendro")
 #install.packages("factoextra")

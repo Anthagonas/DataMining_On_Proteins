@@ -1,0 +1,11 @@
+fasta : 99.95578400486376%
+protein_existence : 100.0%
+source : 100.0%
+entry_name : 100.0%
+seq : 100.0%
+seq_length : 100.0%
+valeurs pour 'fasta' :
+start : 100.0%
+stop : 100.0%
+type_seq : 100.0%
+ECO : 82.67650990313494%
