@@ -2,7 +2,7 @@
 """
 DataMining program : read JSon files
 gather proteins' criteria values
-and creates a table usable via R
+and creates a csv usable via R
 Json format :
 { key1 :
     {key2:,key3:,key4:,key5:,key6:,key7 :
@@ -15,8 +15,8 @@ Key names may vary
 from GetDataCriteria import getCriterias, loadFiles
 
 #main script for clustering
-clusteredList=[]
-critList=["entry_name","seq","seq_length","fasta","protein_existence","phi"]
+clusteredList = []
+critList = ["entry_name","seq","seq_length","fasta","protein_existence","phi"]
 initialDic = getCriterias(loadFiles(), critList)
 #initialDic = {"accession number" : {"criteria1" : value,"crit2":value,...}, "accesN°2" : {}}
 with open("clusters.csv", 'w') as out:
@@ -29,4 +29,3 @@ with open("clusters.csv", 'w') as out:
         for crit in critList:
             out.write(","+str(value[crit]))
         out.write("\n")
-

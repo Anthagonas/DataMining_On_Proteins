@@ -65,7 +65,7 @@ print("Precision des pourcentages pour l'entrée : 'fasta'\n")
 print(fasta_dic,"\n")
 print("enregistrement des valeurs dans le fichier : 'percentages.txt'")
 
-with open("percent_new.txt", 'a') as out:
+with open("percentages.txt", 'a') as out:
 	for entries,value in entry_dic.items() :
 		out.write(str(entries) + ' : ' + str(value)+ '%\n')
 	out.write("valeurs pour 'fasta' :\n")

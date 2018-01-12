@@ -1,1 +1,0 @@
-{"test3" : {"seq" : "LUL", "seq_length" : 5, "source" : "test", "protein_existence" : "yup", "entry_name" : "none", "fasta" : [{"strand" : ".", "ECO" :[], "stop" :5,"start" : 10, "type_seq" : "total mistake", "Dbxref" : "Kappa123"}]}}
