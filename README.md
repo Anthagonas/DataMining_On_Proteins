@@ -4,7 +4,7 @@ This project's goal is to caracterize and regroup proteins using data similarity
 ## Overview
 
 1. json files are considered as your data warehouse.
-1. *clustering.py* gathers data from previous json files and creates *clusters.csv*.
+1. *create_csv.py* gathers data from previous json files and creates *clusters.csv*.
 1. *clusters.csv* can be used either with *hierarchical_clustering.R* or *display_histogram.R* scripts to obtaint graphical results.
 
 ## How to use it :
@@ -18,8 +18,8 @@ _**NOTE** : In our current datawarehouse, the "domains" are stored under the key
 ### Getting the clusters.csv file
 The first step is to gather datas from your data warehouse.
 
-In order to do so, you can use the *clustering.py* script to gather specified criterias within multiple files (see the *clustering.py* file for more informations on the data warehouse structure, the way to change the number of files to load and the criterias to gather)
-Using the *clustering.py* script will generate a *clusters.csv* file.
+In order to do so, you can use the *create_csv.py* script to gather specified criterias within multiple files (see the *create_csv.py* file for more informations on the data warehouse structure, the way to change the number of files to load and the criterias to gather)
+Using the *create_csv.py* script will generate a *clusters.csv* file.
 
 _**NOTE** : you can use the *ble.json*, *ecoli.json* and *homo.json* as test samples for the script, or to check the structure of the json files._
 
@@ -33,9 +33,11 @@ Once the clusters.csv file is ready ( or any csv file with similar data ), two s
 ## Additionnal files
 The scripts use additionnal files in order to work properly.
 
-* **.json files** : The .json files available (homo,ecoli and ble.json) are here for the sake of simplicity, we did not use those files for our analysis, they allow fast processing through R and an easier overview of the datawarehouse structure considering their size. they can be used with *clustering.py* and *data_checking.py*
+* **.json files** : The .json files available (homo,ecoli and ble.json) are here for the sake of simplicity, we did not use those files for our analysis, they allow fast processing through R and an easier overview of the datawarehouse structure considering their size. they can be used with *create_csv.py* and *data_checking.py*
 
-* **ph_table.py** : This python file stores a dictionary giving the pI (Isoelectric point) of an amino acid using the 1 letter code. It is used by the *clustering.py* script in order to process the pI value from the protein sequence.
+* **GetDataCriteria.py** : This script contains the main methods to fetch values from the data warehouse. it is needed for *create_csv.py*,*data_checking.py* and *histogram_table.py* scripts.
+
+* **ph_table.py** : This python file stores a dictionary giving the pI (Isoelectric point) of an amino acid using the 1 letter code. It is used by the *create_csv.py* script in order to process the pI value from the protein sequence.
 
 * **histogram_table.py** : This python file processes the .json files and created a .csv file named after your criteria name. The csv file structure consist of 2 columns : the value of the criteria, and the total time this value has been found in the .json files. 
 _**NOTE** : This script is depreciated since it is not usable via R, but we kept it anyway since it is possible to create an histogram via the .csv files._
