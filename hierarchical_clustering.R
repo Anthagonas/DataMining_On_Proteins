@@ -32,8 +32,8 @@ ggplot() +
   geom_segment(data = ddata$segments, 
                aes(x = x, y = y, xend = xend, yend = yend))
 
-
-ggdendrogram(ddata)
+#ggdendrogram displays label on the leaves, this isn't used for large samples. It is possible to use it for small datas (<= 50 seems right)
+#ggdendrogram(ddata)
 
 #Bottom up Agglomerative nesting
 #processing the clusters ( this may take some time with huge sample size)

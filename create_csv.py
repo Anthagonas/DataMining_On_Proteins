@@ -14,7 +14,9 @@ Key names may vary
 """
 from GetDataCriteria import getCriterias, loadFiles
 
+###
 #main script for clustering
+###
 """
 critList is the list of criteria we want to fetch from the datawarehouse
 it correspond to the key2-7 from our data warehouse
@@ -22,12 +24,17 @@ it correspond to the key2-7 from our data warehouse
 critList = ["entry_name","seq","seq_length","fasta","protein_existence","phi"]
 
 """
+The number of files to be loaded
+"""
+number_of_files = 3
+
+"""
 The "final" dictionary, the one that is converted to .csv file
 structure : finalDic = {"accession number" : {"criteria1" : value,"crit2":value,...}, "accesN°2" : {}}
 where accession number correspond to "key1" and "criteria" to the criterias specified in the critList
-see GetDataCriteria.py for more infos on getCriterias()
+see GetDataCriteria.py for more infos on getCriterias() and loadfiles()
 """
-finalDic = getCriterias(loadFiles(), critList)
+finalDic = getCriterias(loadFiles(number_of_files), critList)
 with open("clusters.csv", 'w') as out:
     out.write("name")
     for crit in critList:

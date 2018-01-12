@@ -11,12 +11,15 @@ Json format :
 key7 correspond to the domains (key name is "fasta")
 Key names may vary
 """
-#Script de Data-Mining sur un ensemble de protéines de differentes espèces
-#Py3
 from json import load
 import ph_table
 
+
 def loadFiles(fileCount=3):
+    """
+    Takes the number of file to load as parameter, ask for the file names and load them.
+    Returns the loaded files as a list.
+    """
     fileList = []
     jsonList = []
     for i in range(0,fileCount):
@@ -31,6 +34,10 @@ def loadFiles(fileCount=3):
     return jsonList
 
 def getPhiValue(seq):
+    """
+    Takes an amino acid sequence (protein) String.
+    Returns the pI (or pHi) from the given sequence.
+    """
     phi_value = 0.0
     count = 0
     for letter in seq:

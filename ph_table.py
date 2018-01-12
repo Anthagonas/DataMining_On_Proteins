@@ -1,8 +1,7 @@
 # -*- coding : utf-8 -*-
 """
-This tables stores every pI value
- of any amino acid (stored with single character code)
- """
+This tables stores every pI value of any amino acid (stored with single character code)
+"""
 PHTABLE = {
     "A":6.00,
     "R":10.76,
